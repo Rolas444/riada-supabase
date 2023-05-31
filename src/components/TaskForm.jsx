@@ -1,23 +1,23 @@
 import React from 'react'
 import { useState } from 'react';
 import { supabase } from '../supabase/client';
+import { useAppStore } from '../zustand/AppStore';
+
 
 const TaskForm = () => {
     const [taskName, setTaskName] = useState("");
-    const handleSubmit = async  (e) => {
+    const createTask = useAppStore((state)=>state.createTask);
+    const getTasks = useAppStore((state)=>state.getTasks);
+    const currentUser = useAppStore((state)=>state.currentUser);
+   const handleSubmit= (e) => {
         e.preventDefault();
-        try{
-            const result = await supabase.from('tasks').insert({
-                name: taskName,
-                status: 'process',
+        createTask({
+            name: taskName,
+            status: "process",
+            userId: currentUser.id,
             })
-            console.log(result);
-        }catch(err){
-            console.log(err);
-        }
-        
-       
-    };
+        getTasks();
+    }
   return (
     <div>TaskForm
 

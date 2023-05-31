@@ -6,15 +6,21 @@ import Login from './pages/Login'
 import NotFound from './pages/NotFound'
 import { supabase } from './supabase/client'
 import { useEffect } from 'react'
+import { useAppStore } from './zustand/AppStore'
 
 function App() {
   const navigate = useNavigate();
+  const setCurrentUser = useAppStore((state)=>state.setCurrentUser);
   
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
       if(!session){
+        setCurrentUser(null);
         navigate("/login")
+      }else{
+        setCurrentUser(session.user)
       }
+
     });
   }, [])
 

@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import {supabase} from "../supabase/client";
+import { useAppStore } from '../zustand/AppStore';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
+    const navigate= useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const currentUser = useAppStore((state)=>state.currentUser);
+    const setCurrentUser = useAppStore((state)=>state.setCurrentUser);
     const handleSubmit = async (e) => {
         e.preventDefault();
         const {data, error} = await supabase.auth.signInWithPassword({
@@ -11,9 +16,11 @@ const Login = () => {
             password: password
         })
         if (data){
-            console.log(data)
+            setCurrentUser(data.user);
+            navigate("/");            
         }
         if(error){
+            alert('ocurrio un error')
             console.log(error)
         }
     }
