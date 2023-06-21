@@ -1,8 +1,8 @@
-import { useState } from 'react'
+
 import './App.css'
 import {  Route, Routes, useNavigate } from 'react-router-dom'
-import Home from './pages/Home'
-import Login from './pages/Login'
+import Home from './pages/home/Home'
+import Login from './pages/login/Login'
 import NotFound from './pages/NotFound'
 import { supabase } from './supabase/client'
 import { useEffect } from 'react'
