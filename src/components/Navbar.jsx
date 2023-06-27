@@ -1,16 +1,37 @@
+import { Link } from "react-router-dom"
+import logo from "../assets/logo/AR.svg";
+import { useAppStore } from "../zustand/AppStore";
 
 const Navbar = () => {
+    const toggle = useAppStore((state)=>state.toggle);
+    const smScreen = useAppStore((state)=>state.smScreen);
+    const setToggle = useAppStore((state)=>state.setToggle);
+    const sidebarSwitch=(e)=>{
+        
+        e.preventDefault();
+        
+        setToggle(!toggle)
+    }
+
     return (
         <>
-            <nav className="navbar navbar-expand-lg bg-dark">
+            <nav className="navbar navbar-expand-lg bg-dark navbar-dark">
                 <div className="container-fluid">
+                    <Link className="navbar-brand d-block d-md-none" to={"/"} onClick={sidebarSwitch}>
+                    {toggle ? (<img src={logo} className="bi" width={30} height={30}/>): (<i className="bi bi-chevron-left"></i>)}
                     
+                    </Link>
+                    {/* <Link className={smScreen ? "d-none": "navbar-brand"} to={"/"}>
+                    <img src={logo} className="bi" width={30} height={30}/>
+                    <span className="fs-4 p-2"> IEP Calle Arequipa</span>
+                    </Link>     */}
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
+
                         <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                            
+
                             <li className="nav-item dropdown">
-                            <i class="bi bi-person-bounding-box me-3"></i>
-                            <span>Rolando Ramirez</span>
+                                <i className="bi bi-person-bounding-box me-3"></i>
+                                <span>Rolando Ramirez</span>
                             </li>
                         </ul>
                         {/* <form className="d-flex" role="search">

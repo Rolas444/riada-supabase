@@ -7,6 +7,8 @@ import NotFound from './pages/NotFound'
 import { supabase } from './supabase/client'
 import { useEffect } from 'react'
 import { useAppStore } from './zustand/AppStore'
+import Settings from './pages/Settings'
+import Ministries from './pages/ministries'
 
 function App() {
   const navigate = useNavigate();
@@ -29,6 +31,8 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>} />
         <Route path='/login' element={<Login />} />
+        <Route path='/settings' element={<Settings/>}/>
+        <Route path='/ministries' element={<Ministries/>}/>
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>

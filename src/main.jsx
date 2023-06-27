@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'react-toastify/dist/ReactToastify.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import "bootstrap/dist/js/bootstrap.bundle.js"
 
 // document.body.appendChild(document.getElementById('root'));
 

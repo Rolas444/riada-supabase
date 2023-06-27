@@ -17,11 +17,16 @@ const Home = () => {
   return (
     <>
     <Layout>
-        <div>Home
-        <button onClick={()=>supabase.auth.signOut()}>
-            Logout
-        </button>
-        
+        <div className='container-fluid'>
+        <div className='row'>
+            <div className='d-flex justify-content-around aling-items-center 
+            col-12 col-sm-6 col-md-4 col-lg-3  p-3 border border-secondary shadow-sm'>
+                <div>
+                    <p>miembros:</p>
+                    <h2>25</h2>
+                </div>
+            </div>
+        </div>
         </div>
     </Layout>
 

@@ -2,16 +2,18 @@ import { create } from "zustand";
 import {devtools, persist } from "zustand/middleware";
 import { createUserSlice } from "./UserSlice";
 import { createTaskSlice } from "./TaskSlice";
+import { createAppSlice } from "./AppSlice";
 
 
 export const useAppStore = create(
     devtools(
-        persist(
+        // persist(
             (...a) =>({
                 ...createUserSlice(...a),
-                ...createTaskSlice(...a)
+                ...createTaskSlice(...a),
+                ...createAppSlice(...a)
             }),
-            {name: 'app-store'}
-        )
+        //     {name: 'app-store'}
+        // )
     )
 )
