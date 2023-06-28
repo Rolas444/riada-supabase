@@ -14,7 +14,7 @@ const TaskList = () => {
     <div>
         {
           tasks.map((task)=>(
-            <div>
+            <div key={task.id}>
               <h2>{task.name}</h2>
               <span>{task.status}</span>
             </div>
