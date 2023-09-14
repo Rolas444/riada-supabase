@@ -1,14 +1,16 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import SearchBar from '../components/searchbar'
 
 const Ministries = () => {
   return (
     <Layout>
-      <div className='container-fluid'>
+      <div className='container-fluid p-4'>
         <div className='row'>
-          <div className="d-flex m-2">
-            <h1 className='text-center'>Ministries</h1>
+          <div className="d-flex justify-content-end">
+            <h1 className="">Ministerios</h1>
           </div>
+          <SearchBar/>
           <div className=''>
             <div className='table-responsive'>
               <table className='table table-sm table-borderless table-hover'>

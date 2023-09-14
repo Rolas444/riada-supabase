@@ -28,7 +28,7 @@ const Sidebar = () => {
                         <li className="nav-item ">
                             <Link to={"/"} className={active === 1 ? "nav-link text-info" : "nav-link text-white"} onClick={() => setPageActive(1)}>
                                 <i className="bi bi-house me-3"></i>
-                                <span><strong>home</strong></span>
+                                <span><strong>Home</strong></span>
                             </Link>
                         </li>
                         <li className="nav-item">
@@ -45,9 +45,9 @@ const Sidebar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link to={"/"} className={active === 4 ? "nav-link text-info" : "nav-link text-white"} onClick={() => setPageActive(4)}>
+                            <Link to={"/persons"} className={active === 4 ? "nav-link text-info" : "nav-link text-white"} onClick={() => setPageActive(4)}>
                                 <i className="bi bi-person me-3"></i>
-                                <span><strong>personas</strong></span>
+                                <span><strong>Personas</strong></span>
                             </Link>
                         </li>
                         <div className="fw-bold">Caja</div>

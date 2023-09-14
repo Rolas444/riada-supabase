@@ -3,10 +3,10 @@ import Layout from "../components/Layout"
 const Settings = () => {
     return (<>
         <Layout>
-            <div className='container-fluid'>
+            <div className='container-fluid p-4'>
                 <div className='row'>
-                    <div className="d-flex m-2 pe-3 justify-content-end">
-                        <h1 className="">ajustes</h1>
+                    <div className="d-flex justify-content-end">
+                        <h1 className="">Ajustes</h1>
                     </div>
                 </div>
             </div>

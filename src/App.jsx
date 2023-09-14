@@ -9,6 +9,7 @@ import { useEffect } from 'react'
 import { useAppStore } from './zustand/AppStore'
 import Settings from './pages/Settings'
 import Ministries from './pages/ministries'
+import Persons from './pages/persons'
 
 function App() {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ function App() {
         <Route path='/login' element={<Login />} />
         <Route path='/settings' element={<Settings/>}/>
         <Route path='/ministries' element={<Ministries/>}/>
+        <Route path='/persons' element={<Persons/>}/>
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>

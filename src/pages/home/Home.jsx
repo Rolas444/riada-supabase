@@ -10,29 +10,25 @@ const Home = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if(!supabase.auth.getUser()){
+        if (!supabase.auth.getUser()) {
             navigate("/login");
         }
     }, [])
-  return (
-    <>
-    <Layout>
-        <div className='container-fluid'>
-        <div className='row'>
-            <div className='d-flex justify-content-around aling-items-center 
-            col-12 col-sm-6 col-md-4 col-lg-3  p-3 border border-secondary shadow-sm'>
-                <div>
-                    <p>miembros:</p>
-                    <h2>25</h2>
+    return (
+        <>
+            <Layout>
+                <div className='container-fluid p-4'>
+                    <div className='row'>
+                        <div className="d-flex justify-content-end">
+                            <h1 className="">Home</h1>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        </div>
-    </Layout>
+            </Layout>
 
-    </>
-    
-  )
+        </>
+
+    )
 }
 
 export default Home;
