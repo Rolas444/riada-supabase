@@ -1,10 +1,9 @@
 import React from 'react'
-import Layout from '../components/Layout'
+import Layout from '../components/admin-layout'
 import SearchBar from '../components/searchbar'
 
 const Ministries = () => {
   return (
-    <Layout>
       <div className='container-fluid p-4'>
         <div className='row'>
           <div className="d-flex justify-content-end">
@@ -43,7 +42,6 @@ const Ministries = () => {
           </div>
         </div>
       </div>
-    </Layout>
   )
 }
 

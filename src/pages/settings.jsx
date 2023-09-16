@@ -1,8 +1,7 @@
-import Layout from "../components/Layout"
+
 
 const Settings = () => {
     return (<>
-        <Layout>
             <div className='container-fluid p-4'>
                 <div className='row'>
                     <div className="d-flex justify-content-end">
@@ -10,7 +9,6 @@ const Settings = () => {
                     </div>
                 </div>
             </div>
-        </Layout>
     </>
         
     )

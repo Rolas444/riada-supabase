@@ -1,6 +1,6 @@
 
 import './App.css'
-import {  Route, Routes, useNavigate } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 import Home from './pages/home/Home'
 import Login from './pages/login/Login'
 import NotFound from './pages/NotFound'
@@ -10,17 +10,18 @@ import { useAppStore } from './zustand/AppStore'
 import Settings from './pages/Settings'
 import Ministries from './pages/ministries'
 import Persons from './pages/persons'
+import AdminLayout from './components/admin-layout'
 
 function App() {
   const navigate = useNavigate();
-  const setCurrentUser = useAppStore((state)=>state.setCurrentUser);
-  
+  const setCurrentUser = useAppStore((state) => state.setCurrentUser);
+
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
-      if(!session){
+      if (!session) {
         setCurrentUser(null);
         navigate("/login")
-      }else{
+      } else {
         setCurrentUser(session.user)
       }
 
@@ -30,11 +31,14 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Home/>} />
         <Route path='/login' element={<Login />} />
-        <Route path='/settings' element={<Settings/>}/>
-        <Route path='/ministries' element={<Ministries/>}/>
-        <Route path='/persons' element={<Persons/>}/>
+        
+        <Route path='/' element={<AdminLayout />}>
+          <Route index element={<Home />} />
+          <Route path='settings' element={<Settings />} />
+          <Route path='ministries' element={<Ministries />} />
+          <Route path='persons' element={<Persons />} />
+        </Route>
         <Route path='*' element={<NotFound />} />
       </Routes>
     </>

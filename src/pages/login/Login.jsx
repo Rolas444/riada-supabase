@@ -3,7 +3,8 @@ import { supabase } from "../../supabase/client";
 import { useAppStore } from '../../zustand/AppStore';
 import { useNavigate } from 'react-router-dom';
 import { ToastContainer, toast } from 'react-toastify';
-import './login.css';
+import {RiMailFill} from 'react-icons/ri'
+// import './login.css';
 
 const Login = () => {
     const navigate = useNavigate();
@@ -40,8 +41,22 @@ const Login = () => {
     }
     return (
         <>
-            
-            <main className='form-signin w-100 mx-auto p-2 '>
+            <div className='min-h-screen flex items-center justify-center'>
+                <div className='bg-secondary-100 p-8 rounded-xl'>
+                    <h1 className='text-3xl uppercase font-bold tracking-[2px] py-5'>Inicia Sesión</h1>
+                    <hr className='mb-8'/>
+                    <form onSubmit={handleSubmit}>
+                        <div className='relative'>
+                            <RiMailFill className='absolute top-1/2 -translate-y-1/2 left-2'/>
+                            <input type='email' className='py-2 px-4 bg-secondary-900 w-full 
+                            pl-8 pr-4 rounded-lg outline-none'
+                            placeholder='Email'/>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            {/* <main className='form-signin w-100 mx-auto p-2 '>
                 <div className='text-white-emphasis'>
                     <img className='mb-4 text-white' src="../../../src/assets/logo/AR.svg" width="72"/>
                 </div>
@@ -67,7 +82,7 @@ const Login = () => {
                     )}
                 </form>
             </main>
-            <ToastContainer autoClose={3000} />
+            <ToastContainer autoClose={3000} /> */}
         </>
     )
 }

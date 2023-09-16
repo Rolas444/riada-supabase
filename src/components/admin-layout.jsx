@@ -3,8 +3,9 @@ import Sidebar from "./Sidebar";
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
 import { useAppStore } from "../zustand/AppStore";
+import { Outlet } from "react-router-dom";
 
-const Layout = ({children}) => {
+const AdminLayout = ({children}) => {
     // const [toggle, setToggle] = useState(false);
     const toggle = useAppStore((state)=>state.toggle);
     const smScreen = useAppStore((state)=>state.smScreen);
@@ -37,10 +38,10 @@ const Layout = ({children}) => {
 
     return (
         <>
-            <Sidebar/>
-            
+            <h3>Layout</h3>
+            <Outlet/>
         </>
     )
 }
 
-export default Layout;
+export default AdminLayout;

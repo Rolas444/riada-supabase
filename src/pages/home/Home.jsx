@@ -3,7 +3,7 @@ import { supabase } from '../../supabase/client';
 import { useNavigate } from 'react-router-dom';
 import TaskForm from '../../components/TaskForm';
 import TaskList from '../../components/TaskList';
-import Layout from '../../components/Layout';
+import Layout from '../../components/admin-layout';
 import "./home.css"
 
 const Home = () => {
@@ -16,8 +16,7 @@ const Home = () => {
     }, [])
     return (
         <>
-            <Layout>
-            </Layout>
+            <h1>Home</h1>
 
         </>
 
