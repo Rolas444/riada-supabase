@@ -16,7 +16,7 @@ const Sidebar = () => {
 
     return (
         <>
-            <div >
+            <div className="">
             </div>
         </>
     )

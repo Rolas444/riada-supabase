@@ -4,42 +4,51 @@ import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
 import { useAppStore } from "../zustand/AppStore";
 import { Outlet } from "react-router-dom";
+import Header from "./header";
 
-const AdminLayout = ({children}) => {
+const AdminLayout = ({ children }) => {
     // const [toggle, setToggle] = useState(false);
-    const toggle = useAppStore((state)=>state.toggle);
-    const smScreen = useAppStore((state)=>state.smScreen);
-    const setToggle = useAppStore((state)=>state.setToggle);
-    const setSmScreen = useAppStore((state)=>state.setSmScreen);
+    const toggle = useAppStore((state) => state.toggle);
+    const smScreen = useAppStore((state) => state.smScreen);
+    const setToggle = useAppStore((state) => state.setToggle);
+    const setSmScreen = useAppStore((state) => state.setSmScreen);
 
 
-    const handleSize =() =>{
+    const handleSize = () => {
         // alert("me voy a ejecutar")
         // console.log(window.innerWidth)
-        if(window.innerWidth>768){
-            
+        if (window.innerWidth > 768) {
+
             setToggle(false);
             setSmScreen(false);
-        }else{
+        } else {
             // alert("me hice chiquito")
             setToggle(true);
             setSmScreen(true);
         }
         window.addEventListener('resize', handleSize);
 
-        return ()=>{
+        return () => {
             window.removeEventListener('resize', handleSize);
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         handleSize();
-    },[])
+    }, [])
 
     return (
         <>
-            <h3>Layout</h3>
-            <Outlet/>
+            <div className="min-h-screen grid grid-cols-6">
+                <Sidebar />
+                <div className="xl:col-span-5 bg-green-400">
+                    <Header />
+                    <div className="h-[90vh">
+                    <Outlet />
+                    </div>
+                    
+                </div>
+            </div>
         </>
     )
 }
