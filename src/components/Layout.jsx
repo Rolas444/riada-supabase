@@ -37,18 +37,7 @@ const Layout = ({children}) => {
 
     return (
         <>
-            <div className="d-flex p-0 m-0">
-                <div className={toggle ? "d-none": "w-auto position-fixed"}>
-                    <Sidebar/>
-                </div>
-                <div className={smScreen ? "d-none": "invisible"}>
-                    <Sidebar/>
-                </div> 
-                <div className="col">
-                   <Navbar />
-                   {children}
-                </div>
-            </div>
+            <Sidebar/>
             
         </>
     )

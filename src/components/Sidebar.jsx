@@ -16,68 +16,7 @@ const Sidebar = () => {
 
     return (
         <>
-            <div className="sidebar d-flex justify-content-between flex-column bg-dark text-white py-3 ps-3  pe-3 ">
-                <div>
-                    <Link to={"/"} className={smScreen? "d-none": "navbar-brand"} >
-                        <img src={logo} className="bi" width={30} height={30}/>
-                        <span className="fs-4 p-2"> Riada</span>
-                    </Link>
-                    <hr className="text-white mt-2" />
-                    <ul className="nav nav-pills flex-column mt-3">
-                        <div className="fw-bold">Inicio</div>
-                        <li className="nav-item ">
-                            <Link to={"/"} className={active === 1 ? "nav-link text-info" : "nav-link text-white"} onClick={() => setPageActive(1)}>
-                                <i className="bi bi-house me-3"></i>
-                                <span><strong>Home</strong></span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/settings"} className={active === 2 ? "nav-link text-info" : "nav-link text-white"} onClick={() => setPageActive(2)}>
-                            <i className="bi bi-gear-wide-connected me-3"></i>
-                                <span><strong>Ajustes</strong></span>
-                            </Link>
-                        </li>
-                        <div className="fw-bold">Miembros</div>
-                        <li className="nav-item">
-                            <Link to={"/ministries"} className={active === 3 ? "nav-link text-info" : "nav-link text-white"} onClick={() => setPageActive(3)}>
-                                <i className="bi bi-people me-3" ></i>
-                                <span><strong>Ministerios</strong></span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/persons"} className={active === 4 ? "nav-link text-info" : "nav-link text-white"} onClick={() => setPageActive(4)}>
-                                <i className="bi bi-person me-3"></i>
-                                <span><strong>Personas</strong></span>
-                            </Link>
-                        </li>
-                        <div className="fw-bold">Caja</div>
-                        <li className="nav-item">
-                            <Link to={"/"} className={active === 5 ? "nav-link text-info" : "nav-link text-white"} onClick={() => setPageActive(5)}>
-                                <i className="bi bi-arrow-right-circle me-3"></i>
-                                <span><strong>Ingresos</strong></span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/"} className={active === 6 ? "nav-link text-info" : "nav-link text-white"} onClick={() => setPageActive(6)}>
-                                <i className="bi bi-arrow-left-circle me-3"></i>
-                                <span><strong>Egresos</strong></span>
-                            </Link>
-                        </li>
-                        <div className="fw-bold">Usuario</div>
-                        <li className="nav-item">
-                            <Link to={"/"} className={active === 7 ? "nav-link text-info" : "nav-link text-white"} onClick={() => setPageActive(7)}>
-                                <i className="bi bi-person-fill-gear me-3"></i>
-                                <span><strong>Perfil</strong></span>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link to={"/"} className="nav-link text-white" onClick={logout}>
-                                <i className="bi bi-box-arrow-left me-3"></i>
-                                <span><strong>Logout</strong></span>
-                            </Link>
-                        </li>
-                    </ul>
-                </div>
+            <div >
             </div>
         </>
     )

@@ -13,7 +13,6 @@ export const useAppStore = create(
                 ...createTaskSlice(...a),
                 ...createAppSlice(...a)
             }),
-        //     {name: 'app-store'}
         // )
     )
 )
