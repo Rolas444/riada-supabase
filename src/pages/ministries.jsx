@@ -4,11 +4,22 @@ import SearchBar from '../components/searchbar'
 
 const Ministries = () => {
   return (
-      <div className='container-fluid p-4'>
-        <div className='row'>
-          <div className="d-flex justify-content-end">
-            <h1 className="">Ministerios</h1>
+      <div className='bg-secondary-100 p-8 rounded-xl'>
+        <h1 className='text-xl text-gray-100'>Ministerios</h1>
+        <hr className='my-8 border-gray-500'/>
+
+        <form >
+          <div className='flex items-center'>
+            <div className='w-1/4'>
+              <p>Nombre</p>
+            </div>
+            <div className='flex-1'>
+              <input/>
+            </div>
           </div>
+        </form>
+        <div className='row'>
+          
           <SearchBar/>
           <div className=''>
             <div className='table-responsive'>

@@ -7,14 +7,14 @@ export default {
   theme: {
     extend: {
       colors:{
-        primary: "#A34A28",//"#EE6C4D",
+        primary: "#5C3D2E",//"#EE6C4D",
         secondary:{
           100: "#1E1F25",
           900: "#131517"
         },
-        menu: "#A34A28",
-        soft: "#F58B54",
-        invert: "#DFDDC7"
+        menu: "#CA965C",
+        soft: "#B85C38",
+        invert: "#E0C097"
       }
     },
   },
