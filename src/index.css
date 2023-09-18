@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;1,300&family=Montserrat:ital,wght@0,300;1,300&family=Open+Sans:ital,wght@0,300;1,300&family=Roboto:ital,wght@0,300;1,300&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&family=Lugrasimo&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,11 +20,16 @@
     font-family: 'Montserrat', sans-serif;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
     width: 0;
 }
 
 ::-webkit-scrollbar-thumb {
     background: "#000";
     border-radius: 10px;
+}
+
+.title-app {
+    font-family: 'Croissant One', cursive;
+    font-family: 'Lugrasimo', cursive;
 }

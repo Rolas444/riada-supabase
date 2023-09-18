@@ -39,11 +39,11 @@ const AdminLayout = ({ children }) => {
 
     return (
         <>
-            <div className="min-h-screen grid grid-cols-6">
+            <div className="min-h-screen grid grid-cols-1 xl:grid-cols-6">
                 <Sidebar />
-                <div className="xl:col-span-5 bg-green-400">
+                <div className="xl:col-span-5">
                     <Header />
-                    <div className="h-[90vh">
+                    <div className="h-[90vh] overflow-y-scroll p-8">
                     <Outlet />
                     </div>
                     
