@@ -11,6 +11,8 @@ import Settings from './pages/Settings'
 import Ministries from './pages/ministries'
 import Persons from './pages/persons'
 import AdminLayout from './components/admin-layout'
+import CreateMinistry from './components/CreateMinistry'
+import IndexMinistry from './components/IndexMinistry'
 
 function App() {
   const navigate = useNavigate();
@@ -36,7 +38,11 @@ function App() {
         <Route path='/' element={<AdminLayout />}>
           <Route index element={<Home />} />
           <Route path='settings' element={<Settings />} />
-          <Route path='ministries' element={<Ministries />} />
+          <Route path='ministries' element={<Ministries />} >
+            <Route index element={<IndexMinistry/>}/>
+            <Route path='create' element={<CreateMinistry />} />
+          </Route>
+
           <Route path='persons' element={<Persons />} />
         </Route>
         <Route path='*' element={<NotFound />} />

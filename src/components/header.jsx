@@ -23,8 +23,8 @@ const Header = () => {
         </MenuButton>
         }
         > 
-          <MenuItem>Perfil</MenuItem>
-          <MenuItem>Salir</MenuItem>
+          <MenuItem>Notificacion 1</MenuItem>
+          <MenuItem>Notificacion 2</MenuItem>
         </Menu>
         
         <Menu arrow theming='dark'
