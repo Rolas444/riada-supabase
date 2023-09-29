@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
-import SearchBar from './searchbar'
+import SearchBar from '../../components/searchbar'
 import { useNavigate } from 'react-router-dom'
-import { useAppStore } from '../zustand/AppStore';
+import { useAppStore } from '../../zustand/AppStore';
 import { shallow } from 'zustand/shallow';
 
 const IndexMinistry = () => {
@@ -39,7 +39,7 @@ const IndexMinistry = () => {
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody> 
                                     
                                     {ministries ? (
                                         ministries.map((m) => (

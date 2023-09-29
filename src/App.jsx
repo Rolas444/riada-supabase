@@ -8,11 +8,13 @@ import { supabase } from './supabase/client'
 import { useEffect } from 'react'
 import { useAppStore } from './zustand/AppStore'
 import Settings from './pages/Settings'
-import Ministries from './pages/ministries'
+import Ministries from './pages/ministries/ministries'
 import Persons from './pages/persons'
 import AdminLayout from './components/admin-layout'
-import CreateMinistry from './components/CreateMinistry'
-import IndexMinistry from './components/IndexMinistry'
+import CreateMinistry from './pages/ministries/CreateMinistry'
+import IndexMinistry from './pages/ministries/IndexMinistry'
+import Users from './pages/users/Users'
+import IndexUser from './pages/users/index-users'
 
 function App() {
   const navigate = useNavigate();
@@ -38,6 +40,9 @@ function App() {
         <Route path='/' element={<AdminLayout />}>
           <Route index element={<Home />} />
           <Route path='settings' element={<Settings />} />
+          <Route path='admin/users' element={<Users/>}>
+            <Route index element={<IndexUser/>}/>
+          </Route>
           <Route path='ministries' element={<Ministries />} >
             <Route index element={<IndexMinistry/>}/>
             <Route path='create' element={<CreateMinistry />} />
