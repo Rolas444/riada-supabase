@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const IndexUser = () => {
     const navigate = useNavigate();
     const createUser = () =>{
-        navigate('admin/users/create')
+        navigate('/admin/users/create')
     }
     return (
         <div className='flex items-center'>

@@ -56,7 +56,7 @@ const Login = () => {
                             onChange={(e) => setEmail(e.target.value)}
                             className='py-3 px-4 bg-secondary-900 w-full 
                             pl-8 pr-4 rounded-lg outline-none'
-                                placeholder='Email' autoComplete='false' />
+                                placeholder='Email' autoComplete='off' />
                         </div>
                         <div className='relative mb-4'>
                             <BsFillLockFill className='absolute top-1/2 -translate-y-1/2 left-2' />

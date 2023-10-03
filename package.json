@@ -11,6 +11,7 @@
     "tauri": "tauri"
   },
   "dependencies": {
+    "@headlessui/react": "^1.7.17",
     "@supabase/supabase-js": "^2.21.0",
     "@szhsin/react-menu": "^4.0.3",
     "bootstrap": "^5.3.0",

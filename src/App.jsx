@@ -15,6 +15,7 @@ import CreateMinistry from './pages/ministries/CreateMinistry'
 import IndexMinistry from './pages/ministries/IndexMinistry'
 import Users from './pages/users/Users'
 import IndexUser from './pages/users/index-users'
+import CreateUser from './pages/users/create-user'
 
 function App() {
   const navigate = useNavigate();
@@ -42,6 +43,7 @@ function App() {
           <Route path='settings' element={<Settings />} />
           <Route path='admin/users' element={<Users/>}>
             <Route index element={<IndexUser/>}/>
+            <Route path='create' element={<CreateUser/>} />
           </Route>
           <Route path='ministries' element={<Ministries />} >
             <Route index element={<IndexMinistry/>}/>

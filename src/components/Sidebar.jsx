@@ -45,9 +45,9 @@ const Sidebar = () => {
                                 <span className="flex items-center gap-4">
                                     <IoSettingsSharp className="text-soft" /> Admin
                                 </span>
-                                <BsChevronRight className={`my-2 ${!showAdminMenu && "rotate-90"} transition-all`} />
+                                <BsChevronRight className={`my-2 ${showAdminMenu && "rotate-90"} transition-all`} />
                             </button>
-                            <ul className={`${!showAdminMenu ? "h-auto" : "h-0"} overflow-y-hidden transition-all `}>
+                            <ul className={`${showAdminMenu ? "h-auto" : "h-0"} overflow-y-hidden transition-all `}>
 
                                 <li>
                                     <Link to="/admin/users" className="py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3
@@ -70,9 +70,9 @@ const Sidebar = () => {
                                 <span className="flex items-center gap-4">
                                     <FaPeopleRoof className="text-soft" /> Membresia
                                 </span>
-                                <BsChevronRight className={`my-2 ${!showSubmenu && "rotate-90"} transition-all`} />
+                                <BsChevronRight className={`my-2 ${showSubmenu && "rotate-90"} transition-all`} />
                             </button>
-                            <ul className={`${!showSubmenu ? "h-auto" : "h-0"} overflow-y-hidden transition-all `}>
+                            <ul className={`${showSubmenu ? "h-auto" : "h-0"} overflow-y-hidden transition-all `}>
 
                                 <li>
                                     <Link to="/persons" className="py-2 px-4 border-l border-gray-500 ml-6 block relative before:w-3 before:h-3
