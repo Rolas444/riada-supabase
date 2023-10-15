@@ -5,10 +5,14 @@ import { Menu, MenuItem, MenuButton } from '@szhsin/react-menu';
 import '@szhsin/react-menu/dist/index.css';
 import "@szhsin/react-menu/dist/theme-dark.css";
 import '@szhsin/react-menu/dist/transitions/slide.css';
+import { useAppStore } from '../zustand/AppStore';
 
 const Header = () => {
+  const currentUser = useAppStore((state)=>state.currentUser);
   const logout = () => {
+    
     supabase.auth.signOut();
+
   }
 
   return (
@@ -34,7 +38,7 @@ const Header = () => {
               <img src="https://previews.123rf.com/images/kritchanut/kritchanut1405/kritchanut140500070/28162537-hombre-foto-de-perfil-silueta-avatar-en-c%C3%ADrculo-icono-de-vectores.jpg"
                 className='w-6 h-6 object-cover rounded-full' />
               <span >
-                Jorge Luis
+                {currentUser?.email}
               </span>
               <RiArrowDownSLine />
             </MenuButton>

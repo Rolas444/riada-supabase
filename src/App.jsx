@@ -19,7 +19,7 @@ import CreateUser from './pages/users/create-user'
 
 function App() {
   const navigate = useNavigate();
-  const setCurrentUser = useAppStore((state) => state.setCurrentUser);
+  // const setCurrentUser = useAppStore((state) => state.setCurrentUser);
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {
