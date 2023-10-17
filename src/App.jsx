@@ -13,13 +13,13 @@ import Persons from './pages/persons'
 import AdminLayout from './components/admin-layout'
 import CreateMinistry from './pages/ministries/CreateMinistry'
 import IndexMinistry from './pages/ministries/IndexMinistry'
-import Users from './pages/users/Users'
 import IndexUser from './pages/users/index-users'
 import CreateUser from './pages/users/create-user'
+import Users from './pages/users/users'
 
 function App() {
   const navigate = useNavigate();
-  // const setCurrentUser = useAppStore((state) => state.setCurrentUser);
+  const setCurrentUser = useAppStore((state) => state.setCurrentUser);
 
   useEffect(() => {
     supabase.auth.onAuthStateChange((event, session) => {

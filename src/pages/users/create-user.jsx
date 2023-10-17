@@ -24,10 +24,15 @@ const CreateUser = () => {
         return person.toLowerCase().includes(query.toLowerCase())
       })
 
+  const handleSubmit = (e)=>{
+    e.preventDefault();
+
+  }
+
   return (<>
     <div className='text-soft mb-3 font-bold'>Nuevo Usuario</div>
 
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="mb-6">
         <label htmlFor="person" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Persona</label>
         <Combobox name='person' value={selectedPerson} onChange={setSelectedPerson}>
@@ -52,24 +57,28 @@ const CreateUser = () => {
             ))}
           </Combobox.Options>
         </Combobox>
-        {/* <input type="text" id="name" className="bg-gray-50 border border-gray-300 text-gray-900
-         text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
-          dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
-           dark:focus:border-blue-500" placeholder="ministerio de ..." required autoComplete='off' /> */}
+        
       </div>
       <div className="mb-6">
         <label htmlFor="desc" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-        <Select type="text" id="desc" className="bg-gray-50 border border-gray-300 
+        <select type="text" id="desc" className="bg-gray-50 border border-gray-300 
         text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 
-        dark:focus:border-blue-500" placeholder='¿Qué hace el ministerio?' autoComplete='off' required >
+        dark:focus:border-blue-500" placeholder='nivel de autorización' autoComplete='off' required >
           <option>
             USER
           </option>
           <option>
             CAJA
           </option>
-        </Select>
+        </select>
+      </div>
+      <div className='mb-6'>
+          <label>Password</label>
+          <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900
+         text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
+          dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
+           dark:focus:border-blue-500" placeholder="Contraseña" required  />
       </div>
       <div className='flex justify-end'>
         <button type="submit" className="text-invert font-bold bg-menu hover:bg-soft focus:ring-4 focus:outline-none
