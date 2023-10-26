@@ -4,6 +4,7 @@ import { createUserSlice } from "./UserSlice";
 import { createTaskSlice } from "./TaskSlice";
 import { createAppSlice } from "./AppSlice";
 import { createMinistrySlice } from "./MinistrySlice";
+import { createPersonSlice} from "./PersonSlice";
 
 
 export const useAppStore = create(
@@ -14,6 +15,7 @@ export const useAppStore = create(
                 ...createTaskSlice(...a),
                 ...createAppSlice(...a),
                 ...createMinistrySlice(...a),
+                ...createPersonSlice(...a),
             }),
         // )
     )

@@ -1,6 +1,7 @@
 import { Combobox } from '@headlessui/react'
 import { event } from 'jquery'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useAppStore } from '../../zustand/AppStore'
 
 const people = [
   'Wade Cooper',
@@ -13,21 +14,30 @@ const people = [
 
 
 const CreateUser = () => {
-  const [selectedPerson, setSelectedPerson] = useState(people[0])
+  
+  const persons = useAppStore((state)=>state.persons)
+  const [selectedPerson, setSelectedPerson] = useState('')
+  const setPersons =useAppStore((state)=>state.setPersons)
   const [query, setQuery] = useState('')
 
 
   const filteredPeople =
     query === ''
-      ? people
-      : people.filter((person) => {
-        return person.toLowerCase().includes(query.toLowerCase())
+      ? persons
+      : persons.filter((p) => {
+        return p.name.toLowerCase().includes(query.toLowerCase())
       })
 
   const handleSubmit = (e)=>{
     e.preventDefault();
 
   }
+
+
+
+  useEffect(()=>{
+    setPersons();
+  },[])
 
   return (<>
     <div className='text-soft mb-3 font-bold'>Nuevo Usuario</div>
@@ -46,13 +56,13 @@ const CreateUser = () => {
             className="mt-1 max-h-60 w-[100%] overflow-auto rounded-md bg-gray-500
             py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
           >
-            {filteredPeople.slice(0,4).map((person) => (
+            {filteredPeople?.slice(0,5)?.map((p) => (
               <Combobox.Option
-                key={person}
-                value={person}
+                key={p.id}
+                value={p.id}
                 className='relative cursor-pointer hover:bg-soft hover:rounded-md select-none px-2 py-2 pr-4'
               >
-                {person}
+                {p.name}
               </Combobox.Option>
             ))}
           </Combobox.Options>

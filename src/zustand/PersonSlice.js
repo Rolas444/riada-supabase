@@ -1,12 +1,16 @@
-import { supabase } from "../supabase/client";
+import UserData from '../supabase/app-data'
 
-export const cratePersonSlice = (get,set)=>({
+export const createPersonSlice = (set,get)=>({
     persons: [],
     person:null,
-    getPersons: async ()=>{
-        const response = await supabase.from("persons").select();
-        set({persons: await response.data})
+    error:null,
+    setPersons: async ()=>{
+        const {data,error} = await UserData.getPersons();
+        console.log(data)
+        set((state)=>({persons: (state.persons= data), error: error}));
     }
 
 
 })
+
+export default createPersonSlice
