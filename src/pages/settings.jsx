@@ -1,16 +1,16 @@
-import Layout from "../components/Layout"
+
 
 const Settings = () => {
-    return (
-        <Layout>
-            <div className='container-fluid'>
+    return (<>
+            <div className='container-fluid p-4'>
                 <div className='row'>
-                    <div className="d-flex p-6">
-                        <h1>Settings</h1>
+                    <div className="d-flex justify-content-end">
+                        <h1 className="">Ajustes</h1>
                     </div>
                 </div>
             </div>
-        </Layout>
+    </>
+        
     )
 }
 

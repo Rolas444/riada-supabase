@@ -3,6 +3,8 @@ import {devtools, persist } from "zustand/middleware";
 import { createUserSlice } from "./UserSlice";
 import { createTaskSlice } from "./TaskSlice";
 import { createAppSlice } from "./AppSlice";
+import { createMinistrySlice } from "./MinistrySlice";
+import { createPersonSlice} from "./PersonSlice";
 
 
 export const useAppStore = create(
@@ -11,9 +13,10 @@ export const useAppStore = create(
             (...a) =>({
                 ...createUserSlice(...a),
                 ...createTaskSlice(...a),
-                ...createAppSlice(...a)
+                ...createAppSlice(...a),
+                ...createMinistrySlice(...a),
+                ...createPersonSlice(...a),
             }),
-        //     {name: 'app-store'}
         // )
     )
 )

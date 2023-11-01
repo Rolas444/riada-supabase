@@ -1,3 +1,5 @@
+import { supabase } from "../supabase/client"
+
 export const createMinistrySlice = (set,get)=>({
     ministries: [],
     currentMinistry:null,
