@@ -6,9 +6,10 @@ export const createPersonSlice = (set,get)=>({
     error:null,
     setPersons: async ()=>{
         const {data,error} = await UserData.getPersons();
-        console.log(data)
+        // console.log(data)}
         set((state)=>({persons: (state.persons= data), error: error}));
     }
+
 
 
 })
