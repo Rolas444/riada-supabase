@@ -7,7 +7,6 @@ import NotFound from './pages/NotFound'
 import { supabase } from './supabase/client'
 import { useEffect, useState } from 'react'
 import { useAppStore } from './zustand/AppStore'
-import Settings from './pages/Settings'
 import Ministries from './pages/ministries/ministries'
 import Persons from './pages/persons'
 import AdminLayout from './components/admin-layout'
@@ -28,7 +27,7 @@ function App() {
 
         <Route path='/' element={<AdminLayout  />}>
           <Route index element={<Home />} />
-          <Route path='settings' element={<Settings />} />
+          
           <Route path='admin/users' element={<Users />}>
             <Route index element={<IndexUser />} />
             <Route path='create' element={<CreateUser />} />
