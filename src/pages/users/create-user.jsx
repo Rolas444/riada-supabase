@@ -3,6 +3,7 @@ import { event } from 'jquery'
 import React, { useEffect, useState } from 'react'
 import { useAppStore } from '../../zustand/AppStore'
 import { Controller, useForm } from "react-hook-form"
+import Select from 'react-select';
 
 
 const CreateUser = () => {
@@ -29,6 +30,9 @@ const CreateUser = () => {
         // return p.name.toLowerCase().includes(query.toLowerCase())
         return (p.name.toLowerCase().includes(query.toLowerCase()) || p.surname.toLowerCase().includes(query.toLowerCase()))
       })
+    const options = persons.map((p)=>{
+     return ({value: p.email, label: p.name })
+    }) 
 
   // const handleSubmit = (e)=>{
   //   e.preventDefault();
@@ -50,7 +54,23 @@ const CreateUser = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-6">
         <label htmlFor="person" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Persona</label>
-        <Controller
+        <Controller 
+        name='email'
+        control={control}
+        defaultValue=""
+        render={({field})=>(
+          <Select
+          classNames={{
+            control: (state)=>('bg-gray-50 text-gray-200')
+            
+          }}
+          {...field}
+          options={options}
+          isSearchable
+          />
+        )}
+        />
+        {/* <Controller
           name='email'
           control={control}
           render={({ field }) => (
@@ -77,7 +97,7 @@ const CreateUser = () => {
               </Combobox.Options>
             </Combobox>
           )}
-        />
+        /> */}
 
       </div>
       <div className="mb-6">
