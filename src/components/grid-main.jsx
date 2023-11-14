@@ -35,15 +35,15 @@ const GridMain = ({ data, columns }) => {
   return (
     <>
       <div className='w-full overflow-x  mt-5'>
-        <div className='w-full flex justify-right'>
-          <div className='w-full relative '>
-            <div className="absolute inset-y-0 rigth-0 flex items-center pl-3 pointer-events-none">
-              <IoSearchSharp className="absolute inset-y-0 rigth-0 flex items-center pl-3 pointer-events-none" />
+        <div className='w-full flex justify-end'>
+          <div className='w-full lg:w-1/2 relative right-0 my-5'>
+            <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+              <IoSearchSharp className="w-4 h-4 text-gray-500" />
             </div>
             <DebouncedInput
               value={globalFilter ?? ''}
               onChange={value => setGlobalFilter(String(value))}
-              className='block  w-full lg:w-1/2 p-2  pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 
+              className='w-full  p-2  pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 
                         focus:ring-soft focus:border-soft dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 
                         dark:text-white dark:focus:ring-soft dark:focus:border-soft' />
           </div>
