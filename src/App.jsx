@@ -7,6 +7,7 @@ import NotFound from './pages/NotFound'
 import { supabase } from './supabase/client'
 import { useEffect, useState } from 'react'
 import { useAppStore } from './zustand/AppStore'
+
 import Ministries from './pages/ministries/ministries'
 import Persons from './pages/persons/persons'
 import AdminLayout from './components/admin-layout'
