@@ -2,13 +2,15 @@ import {
   createColumnHelper,
   flexRender,
   getCoreRowModel,
+  getFacetedRowModel,
+  getPaginationRowModel,
   useReactTable,
 } from '@tanstack/react-table'
 import { ImSpinner2 } from 'react-icons/im'
 
 import { IoSearchSharp } from "react-icons/io5";
 import DebouncedInput from './debounced-input'
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 
 
 const GridMain = ({ data, columns }) => {
@@ -17,22 +19,46 @@ const GridMain = ({ data, columns }) => {
       <ImSpinner2 className="w-8 h-8 animate-spin text-blue-600" />
     </div>
   </>)
+
+  const fuzzyFilter=(row,columnId, value, addMeta)=>{
+    const itemRank = rankItem(row.getValue(columnId), value)
+
+    // Store the itemRank info
+    addMeta({
+      itemRank,
+    })
+  
+    // Return if the item should be filtered in/out
+    return itemRank.passed
+  }
+
   const [globalFilter, setGlobalFilter] = useState('')
 
-  // const ncolumns = useMemo(()=>columns,[data])
+  const ncolumns = useMemo(()=>(columns),[])
 
   const table = useReactTable({
     data,
-    columns,
+    ncolumns,
+    filterFns:{
+      fuzzy: fuzzyFilter,
+    },
     state: {
       globalFilter
     },
     onGlobalFilterChange: setGlobalFilter,
-    getCoreRowModel: getCoreRowModel()
-
+    getCoreRowModel: getCoreRowModel,
+    globalFilterFn: fuzzyFilter,
+    getCoreRowModel:getFacetedRowModel(),
+    getPaginationRowModel:getPaginationRowModel()
   })
 
-
+  useEffect(()=>{
+    if (table.getState().columnFilters[0]?.id==='nombres'){
+      if(table.getState().sorting[0]?.id !=='nombres'){
+        table.setSorting([{id:'nombres', desc: false}])
+      }
+    }
+  },[table.getState().columnFilters[0]?.id])
 
 
   return (
