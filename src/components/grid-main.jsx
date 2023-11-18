@@ -8,7 +8,7 @@ import { ImSpinner2 } from 'react-icons/im'
 
 import { IoSearchSharp } from "react-icons/io5";
 import DebouncedInput from './debounced-input'
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 
 
 const GridMain = ({ data, columns }) => {
@@ -19,12 +19,15 @@ const GridMain = ({ data, columns }) => {
   </>)
   const [globalFilter, setGlobalFilter] = useState('')
 
+  // const ncolumns = useMemo(()=>columns,[data])
+
   const table = useReactTable({
     data,
     columns,
     state: {
       globalFilter
     },
+    onGlobalFilterChange: setGlobalFilter,
     getCoreRowModel: getCoreRowModel()
 
   })

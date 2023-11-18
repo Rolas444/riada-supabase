@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { IoPersonAdd } from 'react-icons/io5'
 import GridMain from '../../components/grid-main'
-import ColumnPersons from '../../components/aux/columnPersons'
+import ColumnPersons from '../../config/persons/config'
 import { useAppStore } from '../../zustand/AppStore'
 
 const IndexPersons = () => {
