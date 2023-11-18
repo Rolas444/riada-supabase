@@ -16,6 +16,8 @@ import IndexMinistry from './pages/ministries/IndexMinistry'
 import IndexUser from './pages/users/index-users'
 import CreateUser from './pages/users/create-user'
 import Users from './pages/users/users'
+import CreatePerson from './pages/persons/createPerson'
+import IndexPersons from './pages/persons/index-persons'
 
 
 function App() {
@@ -37,7 +39,10 @@ function App() {
             <Route path='create' element={<CreateMinistry />} />
           </Route>
 
-          <Route path='persons' element={<Persons />} />
+          <Route path='persons' element={<Persons />} >
+            <Route index element={<IndexPersons />}/>
+            <Route path='create' element={<CreatePerson />} />
+          </Route>
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes >

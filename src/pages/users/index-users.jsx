@@ -3,6 +3,7 @@ import SearchBar from '../../components/searchbar'
 import { useNavigate } from 'react-router-dom'
 
 const IndexUser = () => {
+    
     const navigate = useNavigate();
     const createUser = () =>{
         navigate('/admin/users/create')
