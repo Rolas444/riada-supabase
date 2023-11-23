@@ -6,6 +6,7 @@ import ColumnPersons from '../../config/persons/config'
 import { useAppStore } from '../../zustand/AppStore'
 
 const IndexPersons = () => {
+
   const persons = useAppStore((state) => state.persons)
 
   return (
@@ -20,7 +21,9 @@ const IndexPersons = () => {
       </div>
       <div className='w-full'>
         <div className='table-responsive'>
-          <GridMain data={persons} columns={ColumnPersons} />
+          
+           <GridMain data={persons} columns={ColumnPersons} />
+          
         </div>
       </div>
     </>

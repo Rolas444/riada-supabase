@@ -4,10 +4,11 @@ import SearchBar from '../../components/searchbar'
 import GridMain from '../../components/grid-main'
 import { useAppStore } from '../../zustand/AppStore'
 import { Link, Outlet } from 'react-router-dom'
+import Title from '../../components/title'
 
 
 const Persons = () => {
-    
+
     const setAllPersons = useAppStore((state) => state.setAllPersons)
 
     useEffect(() => {
@@ -17,7 +18,14 @@ const Persons = () => {
     return (
 
         <>
-            <div className='container-fluid p-4'>
+            <div className='bg-secondary-100 p-8 rounded-xl'>
+                <Title name='Personas' />
+                <Outlet>
+
+                </Outlet>
+            </div>
+
+            {/* <div className='container-fluid p-4'>
                 <div className='row'>
 
                     <div className="d-flex justify-content-end">
@@ -25,7 +33,7 @@ const Persons = () => {
                     </div>
                     <Outlet />
                 </div>
-            </div>
+            </div> */}
 
         </>
     )

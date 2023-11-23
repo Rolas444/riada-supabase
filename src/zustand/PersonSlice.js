@@ -11,7 +11,7 @@ export const createPersonSlice = (set,get)=>({
     },
     setAllPersons: async ()=>{
         const {data,error} = await UserData.getAllPersons();
-        // console.log(data)}
+        console.log(data)
         set((state)=>({persons: (state.persons= data), error: error}));
     }
 
