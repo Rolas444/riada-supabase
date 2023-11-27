@@ -2,24 +2,24 @@ import { Combobox } from '@headlessui/react'
 import { event } from 'jquery'
 import React, { useEffect, useState } from 'react'
 import { useAppStore } from '../../zustand/AppStore'
-
-const people = [
-  'Wade Cooper',
-  'Arlene McCoy',
-  'Devon Webb',
-  'Tom Cook',
-  'Tanya Fox',
-  'Hellen Schmidt',
-]
+import { Controller, useForm } from "react-hook-form"
+import Select from 'react-select';
 
 
 const CreateUser = () => {
-  const currentUser = useAppStore((state)=>state.currentUser)
-  const roles = useAppStore((state)=>state.roles)
-  const setRoles = useAppStore((state)=>state.setRoles)
-  const persons = useAppStore((state)=>state.persons)
+  const {
+    register,
+    handleSubmit,
+    watch,
+    control,
+    formState: { errors },
+  } = useForm()
+  const currentUser = useAppStore((state) => state.currentUser)
+  const roles = useAppStore((state) => state.roles)
+  const setRoles = useAppStore((state) => state.setRoles)
+  const persons = useAppStore((state) => state.persons)
   const [selectedPerson, setSelectedPerson] = useState(persons[0])
-  const setPersons =useAppStore((state)=>state.setPersons)
+  const setPersons = useAppStore((state) => state.setPersons)
   const [query, setQuery] = useState('')
 
 
@@ -30,70 +30,97 @@ const CreateUser = () => {
         // return p.name.toLowerCase().includes(query.toLowerCase())
         return (p.name.toLowerCase().includes(query.toLowerCase()) || p.surname.toLowerCase().includes(query.toLowerCase()))
       })
+    const options = persons.map((p)=>{
+     return ({value: p.email, label: p.name })
+    }) 
 
-  const handleSubmit = (e)=>{
-    e.preventDefault();
+  // const handleSubmit = (e)=>{
+  //   e.preventDefault();
 
-  }
+  // }
 
 
 
-  useEffect(()=>{
+  useEffect(() => {
     setPersons();
     setRoles(currentUser.id)
-  },[])
+  }, [])
+
+  const onSubmit = (data) => console.log(data)
 
   return (<>
     <div className='text-soft mb-3 font-bold'>Nuevo Usuario</div>
 
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit(onSubmit)}>
       <div className="mb-6">
         <label htmlFor="person" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Persona</label>
-        <Combobox name='person' value={selectedPerson} onChange={setSelectedPerson}>
-          <Combobox.Input
-            className="bg-gray-50 border border-gray-300 text-gray-900
+        <Controller 
+        name='email'
+        control={control}
+        defaultValue=""
+        render={({field})=>(
+          <Select
+          classNames={{
+            control: (state)=>('bg-gray-50 text-gray-200')
+            
+          }}
+          {...field}
+          options={options}
+          isSearchable
+          />
+        )}
+        />
+        {/* <Controller
+          name='email'
+          control={control}
+          render={({ field }) => (
+            <Combobox   value={selectedPerson} onChange={setSelectedPerson}>
+              <Combobox.Input {...field}
+                className="bg-gray-50 border border-gray-300 text-gray-900
             text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
              dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
               dark:focus:border-blue-500"
-            onChange={(event) => setQuery(event.target.value)} displayValue={(person)=>person.name+' '+person.surname } autoComplete='off' />
-          <Combobox.Options
-            className="mt-1 max-h-60 w-[100%] overflow-auto rounded-md bg-gray-500
+                onChange={(event) => setQuery(event.target.value)} displayValue={(person) => person.name + ' ' + person.surname} autoComplete='off' />
+              <Combobox.Options
+                className="mt-1 max-h-60 w-[100%] overflow-auto rounded-md bg-gray-500
             py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm"
-          >
-            {filteredPeople?.slice(0,5)?.map((p) => (
-              <Combobox.Option
-                key={p.id}
-                value={p}
-                className='relative cursor-pointer hover:bg-soft hover:rounded-md select-none px-2 py-2 pr-4'
               >
-                {p.name+' '+p.surname}
-              </Combobox.Option>
-            ))}
-          </Combobox.Options>
-        </Combobox>
-        
+                {filteredPeople?.slice(0, 5)?.map((p) => (
+                  <Combobox.Option
+                    key={p.id}
+                    value={p}
+                    className='relative cursor-pointer hover:bg-soft hover:rounded-md select-none px-2 py-2 pr-4'
+                  >
+                    {p.name + ' ' + p.surname}
+                  </Combobox.Option>
+                ))}
+              </Combobox.Options>
+            </Combobox>
+          )}
+        /> */}
+
       </div>
       <div className="mb-6">
         <label htmlFor="desc" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Role</label>
-        <select type="text" id="desc" className="bg-gray-50 border border-gray-300 
+        <select {...register('role')} type="text" id="desc" className="bg-gray-50 border border-gray-300 
         text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 
         dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 
         dark:focus:border-blue-500" placeholder='nivel de autorización' autoComplete='off' required >
           {
-            roles.map((r)=>(
+            roles.map((r) => (
               <option key={r.id} value={r.id}>
-                 {r.name} 
+                {r.name}
               </option>
             ))
           }
         </select>
       </div>
       <div className='mb-6'>
-          <label>Password</label>
-          <input type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900
+        <label>Password</label>
+        <input {...register('password')} type="password" id="password" className="bg-gray-50 border border-gray-300 text-gray-900
          text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700
           dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
-           dark:focus:border-blue-500" placeholder="Contraseña" required  />
+           dark:focus:border-blue-500" placeholder="Contraseña" required />
       </div>
       <div className='flex justify-end'>
         <button type="submit" className="text-invert font-bold bg-menu hover:bg-soft focus:ring-4 focus:outline-none

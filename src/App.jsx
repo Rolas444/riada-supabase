@@ -7,15 +7,17 @@ import NotFound from './pages/NotFound'
 import { supabase } from './supabase/client'
 import { useEffect, useState } from 'react'
 import { useAppStore } from './zustand/AppStore'
-import Settings from './pages/settings'
+
 import Ministries from './pages/ministries/ministries'
-import Persons from './pages/persons'
+import Persons from './pages/persons/persons'
 import AdminLayout from './components/admin-layout'
 import CreateMinistry from './pages/ministries/CreateMinistry'
 import IndexMinistry from './pages/ministries/IndexMinistry'
 import IndexUser from './pages/users/index-users'
 import CreateUser from './pages/users/create-user'
 import Users from './pages/users/users'
+import CreatePerson from './pages/persons/createPerson'
+import IndexPersons from './pages/persons/index-persons'
 
 
 function App() {
@@ -28,7 +30,6 @@ function App() {
 
         <Route path='/' element={<AdminLayout  />}>
           <Route index element={<Home />} />
-          <Route path='settings' element={<Settings />} />
           <Route path='admin/users' element={<Users />}>
             <Route index element={<IndexUser />} />
             <Route path='create' element={<CreateUser />} />
@@ -38,7 +39,10 @@ function App() {
             <Route path='create' element={<CreateMinistry />} />
           </Route>
 
-          <Route path='persons' element={<Persons />} />
+          <Route path='persons' element={<Persons />} >
+            <Route index element={<IndexPersons />}/>
+            <Route path='create' element={<CreatePerson />} />
+          </Route>
         </Route>
         <Route path='*' element={<NotFound />} />
       </Routes >
