@@ -11,6 +11,12 @@ export const UserData={
         return await supabase.rpc('get_roles_by_user', {
             iduser
           })
+    },
+    getSexes: async()=>{
+        return await supabase.from('sexes').select('*')
+    },
+    getTdoc:async()=>{
+        return await supabase.from('typedoc').select('*')
     }
 
 }

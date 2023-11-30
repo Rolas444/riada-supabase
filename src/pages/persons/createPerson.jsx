@@ -1,11 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { useAppStore } from '../../zustand/AppStore'
 
 const CreatePerson = () => {
+    const getSexes= useAppStore((state)=>state.getSexes)
+    const getTdocs= useAppStore((state)=>state.getTdocs)
     const {register, watch, formState: {errors},handleSubmit} =useForm()
+    const [sexes, setSexes]=useState([])
+    const [tdocs, setTdocs]=useState([])
+
+    const initialCharge=async()=>{
+        let lsexes = await getSexes()
+        if(sexes!==null){
+            setSexes(lsexes)
+            // console.log(sexes)
+        }
+        let ltdocs= await getTdocs()
+        if(ltdocs!==null){
+            setTdocs(ltdocs)
+            console.log(tdocs)
+        }
+    }
+
     const onSubmit=()=>{
         console.log(watch())
     }
+
+    useEffect(()=>{
+        initialCharge()
+    },[])
 
     return (
         <div className='container-fluid p-4'>
@@ -48,14 +71,30 @@ const CreatePerson = () => {
                             <div className='w-full md:w-1/3 ' >
                                 <label className='text-sm relative text-gray-400'>Sexo:</label>
                                 <select {...register("sex")}  className="w-full bg-transparent focus:outline-none border-b-2" >
-
+                                    {
+                                        sexes.map((s)=>{
+                                            return (<>
+                                            <option key={s.id} className='bg-gray-700 px-2 '>
+                                               <span className='p-2 text-center'>{s.shortName}</span>
+                                            </option>
+                                            </>)
+                                        })
+                                    }
                                 </select>
                             </div>
                             <div className='w-full md:w-2/3 my-3' >
                                 <label className='text-sm relative text-gray-400'>Doc. Identidad:</label>
                                 <div className='w-full flex flex-wrap md:flex-nowrap gap-4'>
                                     <select {...register("typedoc",{required: true})} className="min-w-fit flex md:w-1/2 bg-transparent focus:outline-none border-b-2" >
-                                        <option> DNI</option>
+                                    {
+                                        tdocs.map((t)=>{
+                                            return (<>
+                                            <option key={t.id} className='bg-gray-700 px-2 '>
+                                               <span className='p-2 text-center'>{t.shortname}</span>
+                                            </option>
+                                            </>)
+                                        })
+                                    }
                                     </select>
                                     <input {...register("numdoc", {required:true})} type="text" className="md:w-1/2 flex bg-transparent focus:outline-none border-b-2" />
                                 </div>
